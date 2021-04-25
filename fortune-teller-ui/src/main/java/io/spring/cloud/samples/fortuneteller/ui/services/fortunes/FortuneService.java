@@ -16,12 +16,21 @@ public class FortuneService {
     @Autowired
     RestTemplate restTemplate;
 
-    @HystrixCommand(fallbackMethod = "fallbackFortune")
+    @HystrixCommand(groupKey="fortuneCookie", fallbackMethod = "fallbackFortune")
     public Fortune randomFortune() {
         return restTemplate.getForObject("http://fortunes/random", Fortune.class);
+    }
+    
+    @HystrixCommand(groupKey="fortuneCookie", fallbackMethod = "fallbackPowerBall")
+    public FortunePowerBall randomPowerBall() {
+        return restTemplate.getForObject("http://powerball/powerball", FortunePowerBall.class);
     }
 
     private Fortune fallbackFortune() {
         return new Fortune(42L, fortuneProperties.getFallbackFortune());
+    }
+    
+    private FortunePowerBall fallbackPowerBall() {
+        return new FortunePowerBall(0,0,0,0,0,0);
     }
 }

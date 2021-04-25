@@ -10,5 +10,9 @@ angular.module('fortunes', ['ngRoute']).config(function ($routeProvider) {
     $http.get('random').success(function (data) {
         $scope.fortune = data;
     });
+    
+    $http.get('powerball').success(function (data) {
+        $scope.powerball = data;
+    });
 
 });

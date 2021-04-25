@@ -6,5 +6,8 @@ applications:
   host: fortunes-ui-${random-word}
   path: target/fortune-teller-ui-0.0.1-SNAPSHOT.jar
   services:
-  - config-service
-  - service-registry
+  - config-server
+  - registry
+  - circuit-breaker
+env:
+  CF_TARGET: https://api.system.mgpcf.net

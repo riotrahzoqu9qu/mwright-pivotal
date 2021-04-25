@@ -1,6 +1,7 @@
 package io.spring.cloud.samples.fortuneteller.ui.controllers;
 
 import io.spring.cloud.samples.fortuneteller.ui.services.fortunes.Fortune;
+import io.spring.cloud.samples.fortuneteller.ui.services.fortunes.FortunePowerBall;
 import io.spring.cloud.samples.fortuneteller.ui.services.fortunes.FortuneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,5 +16,10 @@ public class UiController {
     @RequestMapping("/random")
     public Fortune randomFortune() {
         return service.randomFortune();
+    }
+    
+    @RequestMapping("/powerball")
+    public FortunePowerBall randomPowerBall() {
+        return service.randomPowerBall();
     }
 }
